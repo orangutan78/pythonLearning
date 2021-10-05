@@ -1,0 +1,450 @@
+import tkinter
+import tkinter.messagebox
+################
+class XO:
+    turn=0
+    num=0
+    x=0
+    img=None
+    i1=0
+    i2=0
+    i3=0
+    i4=0
+    i5=0
+    i6=0
+    i7=0
+    i8=0
+    i9=0
+    is_done=0
+################
+    def __init__(self,msgbx_True_or_False):
+        start=self.start
+        tk.geometry('275x275')
+        tk.title('井字棋')
+        tk.resizable(width=False,height=False)
+        tk.configure(bg='black')
+        self.b1=tkinter.Button(tk,bd=0,height=4,width=10,command=lambda:start(1,imagex,imageo))
+        self.b1.place(x=0,y=0)
+        self.b2=tkinter.Button(tk,bd=0,height=4,width=10,command=lambda:start(2,imagex,imageo))
+        self.b2.place(x=100,y=0)
+        self.b3=tkinter.Button(tk,bd=0,height=4,width=10,command=lambda:start(3,imagex,imageo))
+        self.b3.place(x=200,y=0)
+        self.b4=tkinter.Button(tk,bd=0,height=4,width=10,command=lambda:start(4,imagex,imageo))
+        self.b4.place(x=0,y=100)
+        self.b5=tkinter.Button(tk,bd=0,height=4,width=10,command=lambda:start(5,imagex,imageo))
+        self.b5.place(x=100,y=100)
+        self.b6=tkinter.Button(tk,bd=0,height=4,width=10,command=lambda:start(6,imagex,imageo))
+        self.b6.place(x=200,y=100)
+        self.b7=tkinter.Button(tk,bd=0,height=4,width=10,command=lambda:start(7,imagex,imageo))
+        self.b7.place(x=0,y=200)
+        self.b8=tkinter.Button(tk,bd=0,height=4,width=10,command=lambda:start(8,imagex,imageo))
+        self.b8.place(x=100,y=200)
+        self.b9=tkinter.Button(tk,bd=0,height=4,width=10,command=lambda:start(9,imagex,imageo))
+        self.b9.place(x=200,y=200)
+        self.lx=tkinter.Label(tk,image=imagex,height=73,width=72)
+        self.lo=tkinter.Label(tk,image=imageo,height=73,width=72)
+        self.lx2=tkinter.Label(tk,image=imagex,height=73,width=72)
+        self.lo2=tkinter.Label(tk,image=imageo,height=73,width=72)
+        self.lx3=tkinter.Label(tk,image=imagex,height=73,width=72)
+        self.lo3=tkinter.Label(tk,image=imageo,height=73,width=72)
+        self.lx4=tkinter.Label(tk,image=imagex,height=73,width=72)
+        self.lo4=tkinter.Label(tk,image=imageo,height=73,width=72)
+        self.lx5=tkinter.Label(tk,image=imagex,height=73,width=72)
+        self.lo5=tkinter.Label(tk,image=imageo,height=73,width=72)
+        self.lx6=tkinter.Label(tk,image=imagex,height=73,width=72)
+        self.lo6=tkinter.Label(tk,image=imageo,height=73,width=72)
+        self.lx7=tkinter.Label(tk,image=imagex,height=73,width=72)
+        self.lo7=tkinter.Label(tk,image=imageo,height=73,width=72)
+        self.lx8=tkinter.Label(tk,image=imagex,height=73,width=72)
+        self.lo8=tkinter.Label(tk,image=imageo,height=73,width=72)
+        self.lx9=tkinter.Label(tk,image=imagex,height=73,width=72)
+        self.lo9=tkinter.Label(tk,image=imageo,height=73,width=72)
+        self.tk=tk
+        self.tk.bind('<Control-p>',self.restart)
+        self.tk.bind('<Control-q>',self.window_quit)
+        if msgbx_True_or_False==1:
+            self.restart(None)
+        else:
+            print('tips:按Ctrl+p重新开始\n     按Ctrl+q退出游戏')
+    def restart(self,event):
+        b1=self.b1
+        b2=self.b2
+        b3=self.b3
+        b4=self.b4
+        b5=self.b5
+        b6=self.b6
+        b7=self.b7
+        b8=self.b8
+        b9=self.b9
+        b1.place_forget()
+        b2.place_forget()
+        b3.place_forget()
+        b4.place_forget()
+        b5.place_forget()
+        b6.place_forget()
+        b7.place_forget()
+        b8.place_forget()
+        b9.place_forget()
+        self.lx.place_forget()
+        self.lx2.place_forget()
+        self.lx3.place_forget()
+        self.lx4.place_forget()
+        self.lx5.place_forget()
+        self.lx6.place_forget()
+        self.lx7.place_forget()
+        self.lx8.place_forget()
+        self.lx9.place_forget()
+        self.lo.place_forget()
+        self.lo2.place_forget()
+        self.lo3.place_forget()
+        self.lo4.place_forget()
+        self.lo5.place_forget()
+        self.lo6.place_forget()
+        self.lo7.place_forget()
+        self.lo8.place_forget()
+        self.lo9.place_forget()
+        b1.place(x=0,y=0)
+        b2.place(x=100,y=0)
+        b3.place(x=200,y=0)
+        b4.place(x=0,y=100)
+        b5.place(x=100,y=100)
+        b6.place(x=200,y=100)
+        b7.place(x=0,y=200)
+        b8.place(x=100,y=200)
+        b9.place(x=200,y=200)
+        self.turn=0
+        self.num=0
+        self.x=0
+        self.img=None
+        self.i1=0
+        self.i2=0
+        self.i3=0
+        self.i4=0
+        self.i5=0
+        self.i6=0
+        self.i7=0
+        self.i8=0
+        self.i9=0
+        self.is_done=0
+    ################
+    def start(self,x=0,imgx=None,imgo=None):
+        turn=self.turn
+        num=self.num
+        i1=self.i1
+        i2=self.i2
+        i3=self.i3
+        i4=self.i4
+        i5=self.i5
+        i6=self.i6
+        i7=self.i7
+        i8=self.i8
+        i9=self.i9
+        b1=self.b1
+        b2=self.b2
+        b3=self.b3
+        b4=self.b4
+        b5=self.b5
+        b6=self.b6
+        b7=self.b7
+        b8=self.b8
+        b9=self.b9
+        lx=self.lx
+        lx2=self.lx2
+        lx3=self.lx3
+        lx4=self.lx4
+        lx5=self.lx5
+        lx6=self.lx6
+        lx7=self.lx7
+        lx8=self.lx8
+        lx9=self.lx9
+        lo=self.lo
+        lo2=self.lo2
+        lo3=self.lo3
+        lo4=self.lo4
+        lo5=self.lo5
+        lo6=self.lo6
+        lo7=self.lo7
+        lo8=self.lo8
+        lo9=self.lo9
+        is_done=self.is_done
+        if is_done==0:
+            turn=turn+1
+            num=turn/2
+            if num==int(num):
+                img=imgo
+            else:
+                img=imgx
+            if x==1:
+                b1.place_forget()
+                if img==imgx:
+                    lx.place(x=0,y=0)
+                    i1=1
+                else:
+                    lo.place(x=0,y=0)
+                    i1=2
+            elif x==2:
+                b2.place_forget()
+                if img==imgx:
+                    lx2.place(x=100,y=0)
+                    i2=1
+                else:
+                    lo2.place(x=100,y=0)
+                    i2=2
+            elif x==3:
+                b3.place_forget()
+                if img==imgx:
+                    lx3.place(x=200,y=0)
+                    i3=1
+                else:
+                    lo3.place(x=200,y=0)
+                    i3=2
+            elif x==4:
+                b4.place_forget()
+                if img==imgx:
+                    lx4.place(x=0,y=100)
+                    i4=1
+                else:
+                    lo4.place(x=0,y=100)
+                    i4=2
+            elif x==5:
+                b5.place_forget()
+                if img==imgx:
+                    lx5.place(x=100,y=100)
+                    i5=1
+                else:
+                    lo5.place(x=100,y=100)
+                    i5=2
+            elif x==6:
+                b6.place_forget()
+                if img==imgx:
+                    lx6.place(x=200,y=100)
+                    i6=1
+                else:
+                    lo6.place(x=200,y=100)
+                    i6=2
+            elif x==7:
+                b7.place_forget()
+                if img==imgx:
+                    lx7.place(x=0,y=200)
+                    i7=1
+                else:
+                    lo7.place(x=0,y=200)
+                    i7=2
+            elif x==8:
+                b8.place_forget()
+                if img==imgx:
+                    lx8.place(x=100,y=200)
+                    i8=1
+                else:
+                    lo8.place(x=100,y=200)
+                    i8=2
+            elif x==9:
+                b9.place_forget()
+                if img==imgx:
+                    lx9.place(x=200,y=200)
+                    i9=1
+                else:
+                    lo9.place(x=200,y=200)
+                    i9=2
+            if i1==i2:
+                if i2==i3:
+                    if i2==1:
+                        m=tkinter.messagebox.showinfo(title='P1 WIN!',message='玩家一胜利！')
+                        if m:
+                            m2=tkinter.messagebox.askokcancel('Want to play again?','要重新开始吗？')
+                            if m2==True:
+                                XO(1)
+                        is_done=1
+                    elif i2==2:
+                        m=tkinter.messagebox.showinfo(title='P2 WIN!',message='玩家二胜利！')
+                        if m:
+                            m2=tkinter.messagebox.askokcancel('Want to play again?','要重新开始吗？')
+                            if m2==True:
+                                XO(1)
+                        is_done=1
+            if i4==i5:
+                if i5==i6:
+                    if i4==1:
+                        m=tkinter.messagebox.showinfo(title='P1 WIN!',message='玩家一胜利！')
+                        if m:
+                            m2=tkinter.messagebox.askokcancel('Want to play again?','要重新开始吗？')
+                            if m2==True:
+                                XO(1)
+                        is_done=1
+                    elif i4==2:
+                        m=tkinter.messagebox.showinfo(title='P2 WIN!',message='玩家二胜利！')
+                        if m:
+                            m2=tkinter.messagebox.askokcancel('Want to play again?','要重新开始吗？')
+                            if m2==True:
+                                XO(1)
+                        is_done=1
+            if i7==i8:
+                if i8==i9:
+                    if i7==1:
+                        m=tkinter.messagebox.showinfo(title='P1 WIN!',message='玩家一胜利！')
+                        if m:
+                            m2=tkinter.messagebox.askokcancel('Want to play again?','要重新开始吗？')
+                            if m2==True:
+                                XO(1)
+                        is_done=1
+                    elif i7==2:
+                        m=tkinter.messagebox.showinfo(title='P2 WIN!',message='玩家二胜利！')
+                        if m:
+                            m2=tkinter.messagebox.askokcancel('Want to play again?','要重新开始吗？')
+                            if m2==True:
+                                XO(1)
+                        is_done=1
+            if i1==i4:
+                if i4==i7:
+                    if i7==1:
+                        m=tkinter.messagebox.showinfo(title='P1 WIN!',message='玩家一胜利！')
+                        if m:
+                            m2=tkinter.messagebox.askokcancel('Want to play again?','要重新开始吗？')
+                            if m2==True:
+                                XO(1)
+                        is_done=1
+                    elif i7==2:
+                        m=tkinter.messagebox.showinfo(title='P2 WIN!',message='玩家二胜利！')
+                        if m:
+                            m2=tkinter.messagebox.askokcancel('Want to play again?','要重新开始吗？')
+                            if m2==True:
+                                XO(1)
+                        is_done=1
+            if i2==i5:
+                if i8==i5:
+                    if i2==1:
+                        m=tkinter.messagebox.showinfo(title='P1 WIN!',message='玩家一胜利！')
+                        if m:
+                            m2=tkinter.messagebox.askokcancel('Want to play again?','要重新开始吗？')
+                            if m2==True:
+                                XO(1)
+                        is_done=1
+                    elif i2==2:
+                        m=tkinter.messagebox.showinfo(title='P2 WIN!',message='玩家二胜利！')
+                        if m:
+                            m2=tkinter.messagebox.askokcancel('Want to play again?','要重新开始吗？')
+                            if m2==True:
+                                XO(1)
+                        is_done=1
+            if i3==i6:
+                if i6==i9:
+                    if i9==1:
+                        m=tkinter.messagebox.showinfo(title='P1 WIN!',message='玩家一胜利！')
+                        if m:
+                            m2=tkinter.messagebox.askokcancel('Want to play again?','要重新开始吗？')
+                            if m2==True:
+                                XO(1)
+                        is_done=1
+                    elif i9==2:
+                        m=tkinter.messagebox.showinfo(title='P2 WIN!',message='玩家二胜利！')
+                        if m:
+                            m2=tkinter.messagebox.askokcancel('Want to play again?','要重新开始吗？')
+                            if m2==True:
+                                XO(1)
+                        is_done=1
+            if i1==i5:
+                if i9==i5:
+                    if i1==1:
+                        m=tkinter.messagebox.showinfo(title='P1 WIN!',message='玩家一胜利！')
+                        if m:
+                            m2=tkinter.messagebox.askokcancel('Want to play again?','要重新开始吗？')
+                            if m2==True:
+                                XO(1)
+                        is_done=1
+                    elif i1==2:
+                        m=tkinter.messagebox.showinfo(title='P2 WIN!',message='玩家二胜利！')
+                        if m:
+                            m2=tkinter.messagebox.askokcancel('Want to play again?','要重新开始吗？')
+                            if m2==True:
+                                XO(1)
+                        is_done=1
+            if i3==i5:
+                if i7==i5:
+                    if i3==1:
+                        m=tkinter.messagebox.showinfo(title='P1 WIN!',message='玩家一胜利！')
+                        if m:
+                            m2=tkinter.messagebox.askokcancel('Want to play again?','要重新开始吗？')
+                            if m2==True:
+                                XO(1)
+                        is_done=1
+                    elif i3==2:
+                        m=tkinter.messagebox.showinfo(title='P2 WIN!',message='玩家二胜利！')
+                        if m:
+                            m2=tkinter.messagebox.askokcancel('Want to play again?','要重新开始吗？')
+                            if m2==True:
+                                XO(1)
+                        is_done=1
+            if i1!=i2 or i1!=i3:
+                if i4!=i5 or i4!=i6:
+                    if i7!=i8 or i7!=i9:
+                        if i1!=i4 or i1!=i7:
+                            if i2!=i5 or i2!=i8:
+                                if i3!=i6 or i3!=i9:
+                                    if i1!=i5 or i1!=i9:
+                                        if i3!=i5 or i3!=i7:
+                                            if i1!=0:
+                                                if i2!=0:
+                                                    if i3!=0:
+                                                        if i4!=0:
+                                                            if i5!=0:
+                                                                if i6!=0:
+                                                                    if i7!=0:
+                                                                        if i8!=0:
+                                                                            if i9!=0:
+                                                                                m=tkinter.messagebox.showinfo(title='DRAW!',message='平局')
+                                                                                if m:
+                                                                                    m2=tkinter.messagebox.askokcancel('Want to play again?','要重新开始吗？')
+                                                                                    if m2==True:
+                                                                                        XO(1)
+                                                                                is_done=1
+        self.turn=turn
+        self.num=num
+        self.i1=i1
+        self.i2=i2
+        self.i3=i3
+        self.i4=i4
+        self.i5=i5
+        self.i6=i6
+        self.i7=i7
+        self.i8=i8
+        self.i9=i9
+        self.b1=b1
+        self.b2=b2
+        self.b3=b3
+        self.b4=b4
+        self.b5=b5
+        self.b6=b6
+        self.b7=b7
+        self.b8=b8
+        self.b9=b9
+        self.lx=lx
+        self.lx2=lx2
+        self.lx3=lx3
+        self.lx4=lx4
+        self.lx5=lx5
+        self.lx6=lx6
+        self.lx7=lx7
+        self.lx8=lx8
+        self.lx9=lx9
+        self.lo=lo
+        self.lo2=lo2
+        self.lo3=lo3
+        self.lo4=lo4
+        self.lo5=lo5
+        self.lo6=lo6
+        self.lo7=lo7
+        self.lo8=lo8
+        self.lo9=lo9
+        self.is_done=is_done
+    def window_quit(self,event):
+        self.tk.quit()
+################
+tk=tkinter.Tk()
+imagex=tkinter.PhotoImage(file='D:\学习\pythonLearning\周逸尘\python\已完成\大作品\井字棋\\x.png')
+imageo=tkinter.PhotoImage(file='D:\学习\pythonLearning\周逸尘\python\已完成\大作品\井字棋\o.png')
+xo=XO(0)
+tk.mainloop()
+################
+'''井字棋2.1.py更新说明：
+    新增：按Ctrl+q可以退出。
+    属于微型加强性更新。'''

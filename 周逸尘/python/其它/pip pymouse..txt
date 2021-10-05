@@ -1,0 +1,4 @@
+pip install pymouse
+python -m pip install --upgrade pip(可能要重试)
+pip install pyuserinput
+pip install pypiwin32
