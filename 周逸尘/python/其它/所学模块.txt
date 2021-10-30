@@ -1,0 +1,20 @@
+1.tkinter(&tkinter.messagebox)
+2.time
+3.random
+4.math
+5.cv2(pip install opencv-python)
+6.pymouse(Pymouse)(pip install pymouse
+                    python -m pip install --upgrade pip(可能要重试)
+                    pip install pyuserinput
+                    pip install pypiwin32)
+7.pykeyboard(PyKeyboard)
+8.keyboard(pip install keyboard)
+9.winsound(beep)
+10.pickle
+11.pygame(皮毛)(pip install pygame)
+12.PIL(pip install pillow)
+13.turtle
+14.aip(pip install baidu-aip)
+15.threading(wait)
+16.sys(setrecursionlimit)
+17.os(remove、unlink)

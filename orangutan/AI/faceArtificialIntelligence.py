@@ -2,6 +2,7 @@ from tkinter import *
 from cv2 import *
 from PIL import Image
 from time import time
+import os
 #from PIL import ImageGrab
 class faceAI:
     '人脸识别'
@@ -26,6 +27,8 @@ class faceAI:
         self.lab=Label(root,image=photo)
         self.lab.image=photo
         self.lab.pack()
+        os.remove(str(now_time)+'.jpg')
+        os.remove(str(now_time)+'.ppm')
 root=Tk()
 faceAI()
 root.mainloop()

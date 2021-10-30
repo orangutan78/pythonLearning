@@ -1,0 +1,6 @@
+with
+__main__
+__enter__
+__exit__
+yield
+next()
